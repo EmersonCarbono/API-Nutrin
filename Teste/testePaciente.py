@@ -10,12 +10,12 @@ def testeListarPaciente():
 def testeCadastrarPaciente():
     url = url_basica + '/paciente/cadastrar'
     paciente = {
-        "username":'emersoncarbono',
+        "username":'ozob',
          "password":"0123456",
-         'nome':'Emerson',
-         'email':'emerson@gmail.com',
+         'nome':'Ozob bozo',
+         'email':'ozob@gmail.com',
          'celular':'11955554662',
-         'dataNascimento':'01-08-1998',
+         'dataNascimento':'01081998',
          'sexo':"M",
          'cidade':'são paulo',
          'profissao':'programador',
@@ -33,10 +33,30 @@ def testeExcluirPaciente(username):
     url = url_basica + '/paciente/excluir/' + username
     dados = Req.api.get(url).json()
     return dados
+
+def testeAlterarPaciente(username_atual, username, nome, email, celular, tipo, dataNascimento, sexo, cidade, profissao, objetivo):
+    url = url_basica + '/paciente/alterar-paciente'
+    paciente = {
+        "username_atual": username_atual,
+        "username": username ,
+        "nome": nome,
+        "email": email,
+        "celular": celular,
+        "tipo": tipo,
+        "dataNascimento": dataNascimento,
+        "sexo": sexo,
+        "cidade": cidade,
+        "profissao": profissao,
+        "objetivo": objetivo,
+    }
+    dados = Req.api.put(url, json=paciente).json()
+    return dados
+
 def main():
     #print(testeListarPaciente())
     #print(testeCadastrarPaciente())
     #print(testePesquisarPaciente('amanada'))
-    print(testeExcluirPaciente("emersoncarbono"))
+    #print(testeExcluirPaciente("emersoncarbono"))
+    print(testeAlterarPaciente('TKPIG', 'ozob', 'Emerson TKP', 'teste@gmail.com', '11955554662', 'P','05092005', 'm', 'são paulo', 'devs', 'ganhar massa'))
 
 main()

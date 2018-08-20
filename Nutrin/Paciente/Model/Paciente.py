@@ -6,7 +6,7 @@ class Paciente(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    dataNascimento = db.Column(db.String)
+    dataNascimento = db.Column(db.DateTime)
     sexo = db.Column(db.String(1))
     cidade = db.Column(db.String(50))
     profissao = db.Column(db.String(50))

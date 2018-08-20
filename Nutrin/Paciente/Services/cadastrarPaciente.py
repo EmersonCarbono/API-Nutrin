@@ -3,9 +3,12 @@ from Nutrin.User.Services.cadastrarUser import cadastrarUser
 from Nutrin.User.Services.buscarUser import buscarUser
 from Nutrin import db
 
+from Nutrin.Controle.converter_data import converterData
+
 def cadastrarPaciente(username, password, nome, email, celular, dataNascimento, sexo, cidade, profissao, objetivo):
     status, mensagem = cadastrarUser(username, password, nome, email, celular, "P")
     if status:
+        dataNascimento = converterData(dataNascimento)
         user = buscarUser(username, True)
         id_user = user.id
         p = Paciente(id_user, dataNascimento, sexo, cidade, profissao, objetivo)
