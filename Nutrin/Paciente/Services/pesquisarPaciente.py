@@ -10,6 +10,8 @@ def pesquisarPaciente(username, f=False):
             if f :
                 return True, p
             else:
+                from Nutrin.Controle.converter_data import dateToString
+                dataNascimento = dateToString(p.dataNascimento)
                 paciente_dic = {
                 'username': p.user.username,
                 'password' : p.user.password,
@@ -17,7 +19,7 @@ def pesquisarPaciente(username, f=False):
                 'email': p.user.email,
                 'celular': p.user.celular,
                 'tipo': p.user.tipo,
-                'dataNascimento': p.dataNascimento,
+                'dataNascimento': dataNascimento,
                 'sexo': p.sexo,
                 'cidade': p.cidade,
                 'profissao': p.profissao,
