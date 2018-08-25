@@ -49,7 +49,7 @@ def PesquisarPacienteRoute(username):
     response['Mensagem'] = retorno
     return jsonify(response)
 
-@app.route('/paciente/alterar-paciente', methods=['PUT'])
+@app.route('/paciente/alterar-paciente', methods=['POST'])
 def AlterarPacienteRoute():
     from Nutrin.Paciente.Services.alterarPacinete import alterarPaciente
     dados = request.get_json()

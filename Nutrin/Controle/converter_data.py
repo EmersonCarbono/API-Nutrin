@@ -8,5 +8,8 @@ def stringToDate(data_str):
     return data
 
 def dateToString(data_obj):
-    return data_obj.strftime("%x")
+    dia = data_obj.strftime("%d")
+    mes = data_obj.strftime("%m")
+    ano =data_obj.strftime("%Y")
+    return str("{}-{}-{}".format(ano,mes,dia))
 
