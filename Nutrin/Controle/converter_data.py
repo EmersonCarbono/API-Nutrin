@@ -1,9 +1,9 @@
 import datetime
 
 def stringToDate(data_str):
-    dia = int(data_str[0:2])
-    mes = int(data_str[2:4])
-    ano = int(data_str[4:])
+    dia = int(data_str[9:])
+    mes = int(data_str[5:7])
+    ano = int(data_str[0:4])
     data = datetime.datetime(ano, mes, dia)
     return data
 
