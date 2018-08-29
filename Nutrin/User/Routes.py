@@ -17,8 +17,6 @@ def LoginRoute():
     response["Dados"] = l
     response["Mensagem"] = "O usuario ou a senha estão errados"
     return jsonify(response)
-    
-
 
 @app.route("/usuarios", methods=["GET"])
 def ListarUserRoute():

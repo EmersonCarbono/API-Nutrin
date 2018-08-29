@@ -10,10 +10,10 @@ def testeListarPaciente():
 def testeCadastrarPaciente():
     url = url_basica + '/paciente/cadastrar'
     paciente = {
-        "username":'ozob',
+        "username":'sheik',
          "password":"0123456",
-         'nome':'Ozob bozo',
-         'email':'ozob@gmail.com',
+         'nome':'milk shake',
+         'email':'olalazob@gmail.com',
          'celular':'11955554662',
          'dataNascimento':'01081998',
          'sexo':"M",
@@ -55,8 +55,8 @@ def testeAlterarPaciente(username_atual, username, nome, email, celular, tipo, d
 def main():
     #print(testeListarPaciente())
     #print(testeCadastrarPaciente())
-    #print(testePesquisarPaciente('amanada'))
+    #print(testePesquisarPaciente('ozob'))
     #print(testeExcluirPaciente("emersoncarbono"))
-    print(testeAlterarPaciente('TKPIG', 'ozob', 'Emerson TKP', 'teste@gmail.com', '11955554662', 'P','05092005', 'm', 'são paulo', 'devs', 'ganhar massa'))
+    print(testeAlterarPaciente('ozob', 'ozob', 'Emerson TKP', 'lala@gmail.com', '11955554662', 'P','01081998', 'm', 'são paulo', 'devs', 'ganhar massa'))
 
 main()
