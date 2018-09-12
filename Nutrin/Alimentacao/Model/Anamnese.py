@@ -1,13 +1,13 @@
 from Nutrin import db
 from Refeicao import Refeicao
-from Nutrin.Paciente.Model.FichaPaciente import FichaPaciente
+from Nutrin.Paciente.Model.Paciente import Paciente
 
 
 class Anamnese(db.Model):
     __tablename__ = "anamneses"
 
     id = db.Column(db.Integer, primary_key=True)
-    FichaPaciente_id = db.Column(db.Integer, db.ForeignKey('fichaPacientes.id'))
+    paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'))
     qtdAtividadeFisica = db.Column(db.Integer)
     tipoExercicio = db.Column(db.String(150))
     horaAcorda = db.Column(db.TIME)
@@ -24,7 +24,8 @@ class Anamnese(db.Model):
     suplementacao = db.Column(String(150))
     refeicoes = db.relationship('Refeicao', backref='anamneseOwner')
 
-    def __init__(self, qtdAtividadeFisica, tipoExercicio, horaAcorda, padraoRefeicao, deficienciaAlimentacaoDiaria, necessitaSuplementoAlimentar, retencaoLiquido, alergiaRemedio, alergiaSuplemento, intoleranciaAlimentar, problemaSaude, problemaSaudeFamilia, medicacao, suplementacao):
+    def __init__(self,paciente_id, qtdAtividadeFisica, tipoExercicio, horaAcorda, padraoRefeicao, deficienciaAlimentacaoDiaria, necessitaSuplementoAlimentar, retencaoLiquido, alergiaRemedio, alergiaSuplemento, intoleranciaAlimentar, problemaSaude, problemaSaudeFamilia, medicacao, suplementacao):
+        self.paciente_id = paciente_id
         self.qtdAtividadeFisica = qtdAtividadeFisica
         self.tipoExercicio = tipoExercicio
         self.horaAcorda = horaAcorda

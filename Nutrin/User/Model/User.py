@@ -36,7 +36,6 @@ class User(db.Model):
         self.email = email
         self.celular = celular
         self.tipo = tipo
-        self.ativo = ativo
     
     def __repr__(self):
         return "<User {0}>".format(self.username)
