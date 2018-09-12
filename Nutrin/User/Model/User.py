@@ -10,6 +10,7 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)
     celular = db.Column(db.String(11))
     tipo = db.Column(db.String(1))
+    ativo = db.Column(db.Boolean, default=True)
 
     #tipo: N - nutricionista, P - paciente, A - admin  
 
@@ -28,13 +29,14 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, username, password, nome, email, celular, tipo):
+    def __init__(self, username, password, nome, email, celular, tipo, ativo):
         self.username = username
         self.password = password
         self.nome = nome
         self.email = email
         self.celular = celular
         self.tipo = tipo
+        self.ativo = ativo
     
     def __repr__(self):
         return "<User {0}>".format(self.username)

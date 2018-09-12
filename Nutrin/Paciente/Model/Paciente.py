@@ -13,7 +13,7 @@ class Paciente(db.Model):
     objetivo = db.Column(db.String(50))
 
     user = db.relationship('User', foreign_keys=user_id)
-
+    
     def __init__(self, id_user, dataNascimento, sexo, cidade, profissao, objetivo):
         self.user_id = id_user
         self.dataNascimento = dataNascimento
