@@ -5,8 +5,8 @@ from Nutrin import db
 
 from Nutrin.Controle.converter_data import stringToDate
 
-def cadastrarPaciente(username, password, nome, email, celular, dataNascimento, sexo, cidade, profissao, objetivo):
-    status, mensagem = cadastrarUser(username, password, nome, email, celular, "P")
+def cadastrarPaciente(username, password, nome, email, celular, dataNascimento, sexo, cidade, profissao, objetivo, ativo):
+    status, mensagem = cadastrarUser(username, password, nome, email, celular, "P", ativo)
     if status:
         dataNascimento = stringToDate(dataNascimento)
         user = buscarUser(username, True)

@@ -16,7 +16,8 @@ def CadastrarPacienteRoute():
     cidade = dados['cidade']
     profissao = dados['profissao']
     objetivo = dados['objetivo']
-    status, mensagem = cadastrarPaciente(username, password, nome, email, celular, dataNascimento, sexo, cidade, profissao, objetivo)
+    ativo = True
+    status, mensagem = cadastrarPaciente(username, password, nome, email, celular, dataNascimento, sexo, cidade, profissao, objetivo, ativo)
     if status:
         response["Status"] = "Sucesso"
         response["Dados"] = ""
