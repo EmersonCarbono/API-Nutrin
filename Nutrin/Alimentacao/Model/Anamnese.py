@@ -1,5 +1,5 @@
 from Nutrin import db
-from Refeicao import Refeicao
+from Nutrin.Alimentacao.Model.Refeicao import Refeicao
 from Nutrin.Paciente.Model.Paciente import Paciente
 
 
