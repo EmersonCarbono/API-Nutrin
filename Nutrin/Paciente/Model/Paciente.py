@@ -1,7 +1,6 @@
 from Nutrin import db
 from Nutrin.User.Model.User import User
-from Nutrin.Consulta.Model.Consulta import Consulta
-from Nutrin.Alimentacao.Model.Anamnese import Anamnese
+
 
 class Paciente(db.Model):
     __tablename__ = "pacientes"
