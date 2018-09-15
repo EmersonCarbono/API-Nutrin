@@ -1,5 +1,4 @@
 from Nutrin import db
-from Nutrin.Consulta.Model.Consulta import Consulta
 
 class TipoAtendimento(db.Model):
     __tablename__ = "tipoAtendimentos"

@@ -1,5 +1,5 @@
 from Nutrin import db
-from Nutrin.Consulta.Model.Consulta import Consulta
+
 
 class TipoEstado(db.Model):
     __tablename__ = "tipoEstados"
@@ -10,7 +10,7 @@ class TipoEstado(db.Model):
 
     # c1 = Consulta(..., tipo=nomeTipo)
 
-    def __init__(self, nome):0
+    def __init__(self, nome):
         self.nome = nome
 
     

@@ -14,8 +14,8 @@ class Consulta(db.Model):
     data = db.Column(db.Date, nullable=False)
     tipoEstado_id = db.Column(db.Integer, db.ForeignKey('tipoEstados.id'), nullable=False)
     antropometria_id = db.Column(db.Integer, db.ForeignKey('tipoAtendimentos.id'))
-    dieta = db.Column(LargeBinary)
-    pagamento = db.Column(Boolean, default=False)
+    dieta = db.Column(db.LargeBinary)
+    pagamento = db.Column(db.Boolean, default=False)
 
     def __init__(self, paciente_id, tipoAtendimento_id, hora, data, tipoEstado_id):
         self.paciente_id = paciente_id
