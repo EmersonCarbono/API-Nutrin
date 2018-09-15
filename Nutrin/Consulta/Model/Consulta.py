@@ -1,7 +1,7 @@
 from Nutrin import db
-from TipoAtendimento import TipoAtendimento
-from Antropometria import Antropometria
-from TipoEstado import TipoEstado
+from Nutrin.Consulta.Model.TipoAtendimento import TipoAtendimento
+from Nutrin.Consulta.Model.Antropometria import Antropometria
+from Nutrin.Consulta.Model.TipoEstado import TipoEstado
 from Nutrin.Paciente.Model.Paciente import Paciente
 
 class Consulta(db.Model):

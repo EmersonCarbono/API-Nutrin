@@ -1,5 +1,5 @@
 from Nutrin import db
-from Consulta import Consulta
+from Nutrin.Consulta.Model.Consulta import Consulta
 
 class TipoAtendimento(db.Model):
     __tablename__ = "tipoAtendimentos"
@@ -13,8 +13,6 @@ class TipoAtendimento(db.Model):
     # c1 = Consulta(..., tipo=nomeTipo)
 
     def __init__(self, nome, preco, qtdRetorno):
-        
-        self.id = id_tipoAtendimento
         self.nome = nome
         self.preco = preco
         self.qtdRetorno = qtdRetorno

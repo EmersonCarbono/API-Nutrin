@@ -1,6 +1,6 @@
 from Nutrin import db
-from TipoRefeicao import TipoRefeicao
-from Anamnese import Anamnese
+from Nutrin.Alimentacao.Model.TipoRefeicao import TipoRefeicao
+from Nutrin.Alimentacao.Model.Anamnese import Anamnese
 
 class Refeicao(db.Model):
     __tablename__ = "refeicoes"
