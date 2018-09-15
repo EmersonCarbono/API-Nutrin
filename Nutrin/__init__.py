@@ -23,3 +23,10 @@ from Nutrin.User.ErrorHandlers import *
 from Nutrin.Paciente.Model.Paciente import Paciente
 from Nutrin.Paciente.Routes import *
 from Nutrin.Paciente.ErrorHandlers import *
+
+#  Consulta
+from Nutrin.Consulta.Model.Consulta import Consulta
+from Nutrin.Consulta.Model.Consulta import TipoAtendimento
+from Nutrin.Consulta.Model.Consulta import TipoEstado
+from Nutrin.Consulta.Model.Consulta import Antropometria
+from Nutrin.Consulta.Routes import *
