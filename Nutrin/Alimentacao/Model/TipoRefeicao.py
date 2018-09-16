@@ -1,5 +1,5 @@
 from Nutrin import db
-from Nutrin.Alimentacao.Model.Refeicao import Refeicao
+
 
 class TipoRefeicao(db.Model):
     __tablename__ = "tipoRefeicoes"
