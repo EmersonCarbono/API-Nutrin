@@ -6,7 +6,7 @@ class TipoRefeicao(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(30),nullable=False)
-    refeicoes = db.relationship('Refeicao', backref='tipo')
+    #refeicoes = db.relationship('Refeicao', backref='tipo')
 
     def __init__(self, nome):
         self.nome = nome

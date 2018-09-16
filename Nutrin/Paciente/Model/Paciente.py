@@ -14,8 +14,8 @@ class Paciente(db.Model):
     objetivo = db.Column(db.String(50))
     altura = db.Column(db.Float, nullable=False)
 
-    consultas = db.relationship('Consulta', backref='consultas')
-    anamneses = db.relationship('Anamnese', backref='anamneses')
+    #consultas = db.relationship('Consulta', backref='consultas')
+    #anamneses = db.relationship('Anamnese', backref='anamneses')
     user = db.relationship('User', foreign_keys=user_id)
 
     

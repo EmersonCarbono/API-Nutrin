@@ -21,7 +21,7 @@ class Anamnese(db.Model):
     problemaSaudeFamilia = db.Column(db.String(150))
     medicacao = db.Column(db.String(150))
     suplementacao = db.Column(db.String(150))
-    refeicoes = db.relationship('Refeicao', backref='anamneseOwner')
+    #refeicoes = db.relationship('Refeicao', backref='anamneseOwner')
 
     def __init__(self,paciente_id, qtdAtividadeFisica, tipoExercicio, horaAcorda, padraoRefeicao, deficienciaAlimentacaoDiaria, necessitaSuplementoAlimentar, retencaoLiquido, alergiaRemedio, alergiaSuplemento, intoleranciaAlimentar, problemaSaude, problemaSaudeFamilia, medicacao, suplementacao):
         self.paciente_id = paciente_id

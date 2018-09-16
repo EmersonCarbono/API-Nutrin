@@ -6,7 +6,7 @@ class TipoEstado(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(30), unique=True)
-    consultas = db.relationship('Consulta', backref='estado')
+    #consultas = db.relationship('Consulta', backref='estado')
 
     # c1 = Consulta(..., tipo=nomeTipo)
 

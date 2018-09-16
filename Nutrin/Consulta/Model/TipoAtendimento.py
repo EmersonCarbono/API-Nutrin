@@ -7,7 +7,7 @@ class TipoAtendimento(db.Model):
     nome = db.Column(db.String(30))
     preco = db.Column(db.Float)
     qtdRetorno = db.Column(db.Integer)
-    consultas = db.relationship('Consulta', backref='tipo')
+    #consultas = db.relationship('Consulta', backref='tipo')
 
     # c1 = Consulta(..., tipo=nomeTipo)
 
