@@ -31,7 +31,6 @@ from Nutrin.Consulta.Model.Consulta import TipoEstado
 from Nutrin.Consulta.Model.Consulta import Antropometria
 from Nutrin.Consulta.Routes import *
 
-
 # Alimentacao
 from Nutrin.Alimentacao.Model.TipoRefeicao import TipoRefeicao
 from Nutrin.Alimentacao.Model.Refeicao import Refeicao
