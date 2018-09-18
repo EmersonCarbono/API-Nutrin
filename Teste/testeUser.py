@@ -5,8 +5,8 @@ url_padrao = "http://127.0.0.1:5000"
 def testeCadastrarUser():
     url = url_padrao + "/usuarios/cadastrar"
     user = {
-        "username":'Mokey',
-        "password":"789456123",
+        "username":'admin',
+        "password":"0123456",
         'nome':'Monkey D. Luffy',
         'email':'luffy@gmail.com',
         'celular':'11955554662',
@@ -54,8 +54,9 @@ def testeExcluirUser(username):
     return Dados 
 
 def main():
+    print(testeCadastrarUser())
     #print(testeListarUser())
     #print(testeBuscarUser('gabi'))
     #print(testeAlterarUser())
-    print(testeAlterarSenha())
+    #print(testeAlterarSenha())
 main()

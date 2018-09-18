@@ -15,6 +15,7 @@ def alterarPaciente(username_atual, username, nome, email, celular, tipo, dataNa
             p.cidade = cidade
             p.profissao = profissao
             p.objetivo = objetivo
+            p.altura = altura
             db.session.commit()
             return True, "Paciente alterado com sucesso"
         return status_user, mensagem

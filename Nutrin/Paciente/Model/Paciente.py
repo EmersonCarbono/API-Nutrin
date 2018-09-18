@@ -20,7 +20,7 @@ class Paciente(db.Model):
 
     
     def __init__(self, id_user, dataNascimento, sexo, cidade, profissao, objetivo,altura):
-        self.user_id = id_user
+        self.user_id = id_user 
         self.dataNascimento = dataNascimento
         self.sexo = sexo
         self.cidade = cidade
