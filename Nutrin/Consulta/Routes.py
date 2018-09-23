@@ -48,7 +48,7 @@ def UpdateTipoEstadoRoute():
 
 # Tipo Atendimento
 
-@app.route('/tipo-atendimento/cadastrar'. methods=["POST"])
+@app.route('/tipo-atendimento/cadastrar', methods=["POST"])
 def CreateTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.createTipoAtendimento import createTipoAtendimento
     dados = request.get_json()
@@ -66,12 +66,13 @@ def CreateTipoAtendimentoRoute():
     response["Mensagem"] = mensagem
     return jsonify(response)
 
-@app.route('/tipo-atendimento/<id_atendiemnto>', defaut={'id_atendiemnto' : None
-}, methods=["GET"])
-def buscarTipoAtendimentoRoute(id_atendiemnto):
+@app.route('/tipo-atendimento/buscar', methods=["POST"])
+def buscarTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.readTipoAtendimento import readTipoAtendimento
+    print("ATé aqui foi")
     dados = request.get_json()
-    status, mensagem = readTipoAtendimento(id_atendiemnto)
+    id_atendiemnto = dados["id_atual"]
+    status, mensagem = readTipoAtendimento(False, id_atendiemnto)
     if status:
         response["Status"] = "Sucesso"
         response["Dados"] = mensagem
@@ -82,15 +83,15 @@ def buscarTipoAtendimentoRoute(id_atendiemnto):
     response["Mensagem"] = mensagem
     return jsonify(response)
 
-@app.route('/tipo-atendimento/alterar'. methods=["POST"])
+@app.route('/tipo-atendimento/alterar', methods=["POST"])
 def updateTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.updateTipoAtendimento import updateTipoAtendimento
     dados = request.get_json()
-    id_atendiemnto = daods["id"]
+    id_atendiemnto = dados["id_atendiemnto"]
     nome = dados["nome"]
     preco = dados["preco"]
     qtdRetorno = dados["qtdRetorno"]
-    status, mensagem = updateTipoAtendimento(nome, preco, qtdRetorno)
+    status, mensagem = updateTipoAtendimento(id_atendiemnto, nome, preco, qtdRetorno)
     if status:
         response["Status"] = "Sucesso"
         response["Dados"] = ""

@@ -1,9 +1,10 @@
-def updateTipoAtendimento(id_atendiemnto, nome, preo, qtdRetorno):
+def updateTipoAtendimento(id_atendiemnto, nome, preco, qtdRetorno):
     from Nutrin.Consulta.Services.TipoAtendimento.readTipoAtendimento import readTipoAtendimento
-    tipo_atendimento = readTipoAtendimento(True, id_tipo)
+    status, tipo_atendimento = readTipoAtendimento(True, id_atendiemnto)
+    nome = nome.upper()
     if tipo_atendimento.nome != nome:
         from Nutrin.Consulta.Services.TipoAtendimento.validarNome import validarNome
-        if not validarNome:
+        if not validarNome(nome):
             return False, "Nome do tipo atendimento já existe"
     tipo_atendimento.nome = nome
     tipo_atendimento.preco = preco
