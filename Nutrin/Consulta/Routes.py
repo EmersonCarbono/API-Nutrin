@@ -63,3 +63,95 @@ def CreateTipoAtendimentoRoute():
     response["Dados"] = ""
     response["Mensagem"] = mensagem
     return jsonify(response)
+
+# Antropometria
+
+@app.route('/antropometria/cadastrar'. methods=["POST"])
+def createAntropometriaRoute():
+    from Nutrin.Consulta.Services.Antropometria.createAntropometria import createAntropometria
+    dados = request.get_json()
+    peso = dados["peso"]
+    braco = dados["braco"]
+    torax = dados["torax"]
+    cintura = dados["cintura"]
+    abdomen = dados["abdomen"]
+    quadril = dados["quadril"]
+    coxa = dados["coxa"]
+    biceps = dados["biceps"]
+    triceps = dados["triceps"]
+    peito = dados["peito"]
+    subsCap = dados["subsCap"]
+    axilar = dados["axilar"]
+    gorduraPerc = dados["gorduraPerc"]
+    aguaPerc = dados["aguaPerc"]
+    pesoMagro = dados["pesoMagro"]
+    status, mensagem = createAntropometria(peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/antropometria/alterar'. methods=["POST"])
+def updateAntropometriaRoute():
+    from Nutrin.Consulta.Services.Antropometria.updateAntropometria import updateAntropometria
+    dados = request.get_json()
+    antropometria_id = dados["id"]
+    peso = dados["peso"]
+    braco = dados["braco"]
+    torax = dados["torax"]
+    cintura = dados["cintura"]
+    abdomen = dados["abdomen"]
+    quadril = dados["quadril"]
+    coxa = dados["coxa"]
+    biceps = dados["biceps"]
+    triceps = dados["triceps"]
+    peito = dados["peito"]
+    subsCap = dados["subsCap"]
+    axilar = dados["axilar"]
+    gorduraPerc = dados["gorduraPerc"]
+    aguaPerc = dados["aguaPerc"]
+    pesoMagro = dados["pesoMagro"]
+    status, mensagem = updateAntropometria(antropometria_id,peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/antropometria/bucar/<ID>'. methods=["GET"])
+def readAntropometriaRoute(ID):
+    from Nutrin.Consulta.Services.Antropometria.readAntropometria import readAntropometria
+    status, mensagem = readAntropometria(ID)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+
+@app.route('/antropometria/deletar/<ID>'. methods=["GET"])
+def deleteAntropometriaRoute(ID):
+    from Nutrin.Consulta.Services.Antropometria.deleteAntropometria import deleteAntropometria
+    status, mensagem = deleteAntropometria(ID)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
