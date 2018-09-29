@@ -6,8 +6,9 @@ def validaHorario(data, hora):
     status, dado = readHorario(data, hora)
     if status:
         if dado('utilizado'):
-            return False, "Horário já esta sendo utilizado"
-        return True, "Horário disponível para agendamento"
+            return True, "Horário já esta sendo utilizado"
+        return False, "Horário disponível para agendamento"
+    return None, dado
 
 
 

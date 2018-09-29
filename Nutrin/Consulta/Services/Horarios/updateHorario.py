@@ -6,16 +6,20 @@ def updateHorario(data, hora, verdade):
 
     status, dado = validaHorario(data, hora)
     if status:
-        #Disponivel para virar true
-        if status == !verdade:
-            return False, 
-    return 
-    dado.utilizado = verdade
-    db.session.commit()
+        if verdade:
+            return False, "Horário já está sendo utilizado"
+        else:
+            dado.utilizado = verdade
+            db.session.commit()
+            return True, "Horário foi liberado"
+    elif status == False:
+        if verdade:
+            dado.utilizado = verdade
+            db.session.commit()
+            return True, "Horário foi ocupado"
+        return False, "Horario já esta liberado"
+    return False, dado
 
-    if verdade:
-        return True, "Horário agora esta sendo utilizado"
-    return True, "Horário disponóvel para utilização"
 
 
 

@@ -105,7 +105,7 @@ def updateTipoAtendimentoRoute():
   
 # Antropometria
 
-@app.route('/antropometria/cadastrar'. methods=["POST"])
+@app.route('/antropometria/cadastrar', methods=["POST"])
 def createAntropometriaRoute():
     from Nutrin.Consulta.Services.Antropometria.createAntropometria import createAntropometria
     dados = request.get_json()
@@ -136,7 +136,7 @@ def createAntropometriaRoute():
     return jsonify(response)
         
 
-@app.route('/antropometria/alterar'. methods=["POST"])
+@app.route('/antropometria/alterar', methods=["POST"])
 def updateAntropometriaRoute():
     from Nutrin.Consulta.Services.Antropometria.updateAntropometria import updateAntropometria
     dados = request.get_json()
@@ -167,7 +167,7 @@ def updateAntropometriaRoute():
     response["Mensagem"] = mensagem
     return jsonify(response)
 
-@app.route('/antropometria/bucar/<ID>'. methods=["GET"])
+@app.route('/antropometria/bucar/<ID>', methods=["GET"])
 def readAntropometriaRoute(ID):
     from Nutrin.Consulta.Services.Antropometria.readAntropometria import readAntropometria
     status, mensagem = readAntropometria(ID)
@@ -181,7 +181,7 @@ def readAntropometriaRoute(ID):
     response["Mensagem"] = mensagem
     return jsonify(response)
   
-@app.route('/antropometria/deletar/<ID>'. methods=["GET"])
+@app.route('/antropometria/deletar/<ID>', methods=["GET"])
 def deleteAntropometriaRoute(ID):
     from Nutrin.Consulta.Services.Antropometria.deleteAntropometria import deleteAntropometria
     status, mensagem = deleteAntropometria(ID)
