@@ -3,18 +3,19 @@ from Nutrin import db
 class Horarios(db.Model):
     __tablename__ = "horarios"
     __table_args__ = (
-        db.UniqueConstraint('data', 'hora', name='horario unico'),
+        db.UniqueConstraint('data', 'horaInicio', 'horaFim', name='periodo unico'),
     )
 
     id = db.Column(db.Integer, primary_key=True)
     data = db.Column(db.Datetime, nullable=False)
-    hora = db.Column(db.TIME, nullable=False)
-    utilizado = db.Column(db.Boolean, default=False)
+    horaInicio = db.Column(db.TIME, nullable=False)
+    horaFim = db.Column(db.TIME, nullable=False)
 
-    def __init__(self, data, hora):
+    def __init__(self, data, horaInicio, horaFim):
         self.data = data
-        self.hora = hora
+        self.horaIncio = horaInicio
+        self.horaFim = horaFim
 
     def __repr__(self):
-        return "<Horários disponíveis: {} - {} - {}".format(self.data, self.hora, self.utilizado)
+        return "<Período disponível: {} - {} - {}".format(self.data, self.horaInicio, self.horaFim)
 

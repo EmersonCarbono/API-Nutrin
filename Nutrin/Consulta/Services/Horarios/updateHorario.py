@@ -1,9 +1,14 @@
 from Nutrin import db
 from Nutrin.Consulta.Services.Horarios.validaHorario import validaHorario
 
-def updateHorario(data, hora, verdade):
-    false se for true
+def updateHorario(periodo, hI, hF):
+    
 
+
+
+
+
+'''
     status, dado = validaHorario(data, hora)
     if status:
         if verdade:
@@ -20,6 +25,6 @@ def updateHorario(data, hora, verdade):
         return False, "Horario já esta liberado"
     return False, dado
 
-
+'''
 
 
