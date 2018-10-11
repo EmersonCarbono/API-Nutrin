@@ -68,7 +68,7 @@ def CreateTipoAtendimentoRoute():
   
   
 @app.route('/tipo-atendimento/buscar', methods=["POST"])
-def buscarTipoAtendimentoRoute():
+def BuscarTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.readTipoAtendimento import readTipoAtendimento
     print("ATé aqui foi")
     dados = request.get_json()
@@ -85,7 +85,7 @@ def buscarTipoAtendimentoRoute():
     return jsonify(response)
         
 @app.route('/tipo-atendimento/alterar', methods=["POST"])
-def updateTipoAtendimentoRoute():
+def UpdateTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.updateTipoAtendimento import updateTipoAtendimento
     dados = request.get_json()
     id_atendiemnto = dados["id_atendiemnto"]
@@ -181,6 +181,7 @@ def readAntropometriaRoute(ID):
     response["Mensagem"] = mensagem
     return jsonify(response)
   
+
 @app.route('/antropometria/deletar/<ID>', methods=["GET"])
 def deleteAntropometriaRoute(ID):
     from Nutrin.Consulta.Services.Antropometria.deleteAntropometria import deleteAntropometria
@@ -194,3 +195,91 @@ def deleteAntropometriaRoute(ID):
     response["Dados"] = ""
     response["Mensagem"] = mensagem
     return jsonify(response)
+
+
+#Horarios
+
+@app.route('/horario/cadastrar', methods=['POST'])
+def createHorarioRoute():
+    dados = request.get_json()
+    from Nutrin.Consulta.Services.Horarios.createHorario import createHorario
+    status, mensagem = createHorario(dados['data'],dados['hora'])
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/horario/alterar', methods=['PUT'])
+def updateHorarioRoute():
+    dados = request.get_json()
+    from Nutrin.Consulta.Services.Horarios.updateHorario import updateHorario
+    status, mensagem = updateHorario(dados['data'],dados['hora'],dados['utilizar'])
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/horario/deletar', methods=['POST'])
+def deleteHorarioRoute():
+    dados = request.get_json()
+    from Nutrin.Consulta.Services.Horarios.deleteHorario import deleteHorario
+    status, mensagem = deleteHorario(dados['data'],dados['hora'])
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+    
+@app.route('/horario', methods=['GET'])
+def listHorarioRoute():
+    from Nutrin.Consulta.Services.Horarios.listHorario import listHorario
+    response["Status"] = "Sucesso"
+    response["Dados"] = listHorario()
+    response["Mensagem"] = ""
+    return jsonify(response)
+
+@app.route('/horario/buscar', methods=['POST'])
+def readHorarioRoute():
+    from Nutrin.Consulta.Services.Horarios.readHorario import readHorario
+    
+
+#Horarios ocupados
+
+
+# Consultas
+
+@app.route('/consulta/cadastrar', methods=["POST"])
+def CreateConsultaRoute():
+    from Nutrin.Consulta.Services.Consulta.createConsulta import createConsulta
+    dados = request.get_json()
+    paciente_id = dados["paciente_id"]
+    tipoAtendimento_id = dados["tipoAtendimento_id"]
+    hora = dados["hora"]
+    data = dados["data"]
+    tipoEstado_id = dados["tipoEstado_id"]
+    status, mensagem = createConsulta(paciente_id, tipoAtendimento_id, hora, data, tipoEstado_id)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+

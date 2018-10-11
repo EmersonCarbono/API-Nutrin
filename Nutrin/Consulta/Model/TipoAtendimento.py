@@ -8,7 +8,6 @@ class TipoAtendimento(db.Model):
     preco = db.Column(db.Float)
     qtdRetorno = db.Column(db.Integer)
     #consultas = db.relationship('Consulta', backref='tipo')
-
     # c1 = Consulta(..., tipo=nomeTipo)
 
     def __init__(self, nome, preco, qtdRetorno):
