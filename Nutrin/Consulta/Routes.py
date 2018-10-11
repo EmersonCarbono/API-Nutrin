@@ -65,7 +65,8 @@ def CreateTipoAtendimentoRoute():
     response["Dados"] = ""
     response["Mensagem"] = mensagem
     return jsonify(response)
-
+  
+  
 @app.route('/tipo-atendimento/buscar', methods=["POST"])
 def BuscarTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.readTipoAtendimento import readTipoAtendimento
@@ -82,7 +83,7 @@ def BuscarTipoAtendimentoRoute():
     response["Dados"] = ""
     response["Mensagem"] = mensagem
     return jsonify(response)
-
+        
 @app.route('/tipo-atendimento/alterar', methods=["POST"])
 def UpdateTipoAtendimentoRoute():
     from Nutrin.Consulta.Services.TipoAtendimento.updateTipoAtendimento import updateTipoAtendimento
@@ -101,6 +102,163 @@ def UpdateTipoAtendimentoRoute():
     response["Dados"] = ""
     response["Mensagem"] = mensagem
     return jsonify(response)
+  
+# Antropometria
+
+@app.route('/antropometria/cadastrar', methods=["POST"])
+def createAntropometriaRoute():
+    from Nutrin.Consulta.Services.Antropometria.createAntropometria import createAntropometria
+    dados = request.get_json()
+    peso = dados["peso"]
+    braco = dados["braco"]
+    torax = dados["torax"]
+    cintura = dados["cintura"]
+    abdomen = dados["abdomen"]
+    quadril = dados["quadril"]
+    coxa = dados["coxa"]
+    biceps = dados["biceps"]
+    triceps = dados["triceps"]
+    peito = dados["peito"]
+    subsCap = dados["subsCap"]
+    axilar = dados["axilar"]
+    gorduraPerc = dados["gorduraPerc"]
+    aguaPerc = dados["aguaPerc"]
+    pesoMagro = dados["pesoMagro"]
+    status, mensagem = createAntropometria(peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+        
+
+@app.route('/antropometria/alterar', methods=["POST"])
+def updateAntropometriaRoute():
+    from Nutrin.Consulta.Services.Antropometria.updateAntropometria import updateAntropometria
+    dados = request.get_json()
+    antropometria_id = dados["id"]
+    peso = dados["peso"]
+    braco = dados["braco"]
+    torax = dados["torax"]
+    cintura = dados["cintura"]
+    abdomen = dados["abdomen"]
+    quadril = dados["quadril"]
+    coxa = dados["coxa"]
+    biceps = dados["biceps"]
+    triceps = dados["triceps"]
+    peito = dados["peito"]
+    subsCap = dados["subsCap"]
+    axilar = dados["axilar"]
+    gorduraPerc = dados["gorduraPerc"]
+    aguaPerc = dados["aguaPerc"]
+    pesoMagro = dados["pesoMagro"]
+    status, mensagem = updateAntropometria(antropometria_id,peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/antropometria/bucar/<ID>', methods=["GET"])
+def readAntropometriaRoute(ID):
+    from Nutrin.Consulta.Services.Antropometria.readAntropometria import readAntropometria
+    status, mensagem = readAntropometria(ID)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+  
+@app.route('/antropometria/deletar/<ID>', methods=["DELETE"])
+def deleteAntropometriaRoute(ID):
+    from Nutrin.Consulta.Services.Antropometria.deleteAntropometria import deleteAntropometria
+    status, mensagem = deleteAntropometria(ID)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+
+#Horarios
+
+@app.route('/horario/cadastrar', methods=['POST'])
+def createHorarioRoute():
+    dados = request.get_json()
+    from Nutrin.Consulta.Services.Horarios.createHorario import createHorario
+    status, mensagem = createHorario(dados['data'],dados['hora'])
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/horario/alterar', methods=['PUT'])
+def updateHorarioRoute():
+    dados = request.get_json()
+    from Nutrin.Consulta.Services.Horarios.updateHorario import updateHorario
+    status, mensagem = updateHorario(dados['data'],dados['hora'],dados['utilizar'])
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+@app.route('/horario/deletar', methods=['POST'])
+def deleteHorarioRoute():
+    dados = request.get_json()
+    from Nutrin.Consulta.Services.Horarios.deleteHorario import deleteHorario
+    status, mensagem = deleteHorario(dados['data'],dados['hora'])
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = mensagem
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
+    
+@app.route('/horario', methods=['GET'])
+def listHorarioRoute():
+    from Nutrin.Consulta.Services.Horarios.listHorario import listHorario
+    response["Status"] = "Sucesso"
+    response["Dados"] = listHorario()
+    response["Mensagem"] = ""
+    return jsonify(response)
+
+@app.route('/horario/buscar', methods=['POST'])
+def readHorarioRoute():
+    from Nutrin.Consulta.Services.Horarios.readHorario import readHorario
+    
+
+#Horarios ocupados
+
 
 # Consultas
 
@@ -123,3 +281,4 @@ def CreateConsultaRoute():
     response["Dados"] = ""
     response["Mensagem"] = mensagem
     return jsonify(response)
+
