@@ -181,7 +181,8 @@ def readAntropometriaRoute(ID):
     response["Mensagem"] = mensagem
     return jsonify(response)
   
-@app.route('/antropometria/deletar/<ID>', methods=["DELETE"])
+
+@app.route('/antropometria/deletar/<ID>', methods=["GET"])
 def deleteAntropometriaRoute(ID):
     from Nutrin.Consulta.Services.Antropometria.deleteAntropometria import deleteAntropometria
     status, mensagem = deleteAntropometria(ID)
