@@ -1,13 +1,21 @@
 from Nutrin import db
-from Nutrin.Consulta.Services.Horarios.validaHorario import validaHorario
+from Nutrin.Consulta.Services.Horarios.readHorario import readHorarioById
+from Nutrin.Consulta.Services.Ocupado.readOcupado import readOcupadoNoPeriodo
 
-def updateHorario(periodo, hI, hF):
+def updateHorario(id, hI, hF):
+    status, dado = readOcupadoNoPeriodo(id)
+    if status:
+        return False, "Não é possivel alterar. Há um paciente utilizando o horário"
+    else:
+        statusObj, dadoObj = readHorarioById(id,True)
+        if statusObj:
+            dadoObj.horaInicio = hI
+            dadoObj.horaFim = hF
+            db.session.commit()
+            return True, "Periodo alterado"
+        return statusObj, dadoObj
     
-
-
-
-
-
+    
 '''
     status, dado = validaHorario(data, hora)
     if status:
@@ -26,5 +34,6 @@ def updateHorario(periodo, hI, hF):
     return False, dado
 
 '''
+
 
 

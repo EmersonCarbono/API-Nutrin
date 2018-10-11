@@ -16,3 +16,18 @@ def readHorario(data, horaInicio, horaFim, f =False):
         return True, hora
     return False, "Período não cadastrado"
 
+def readHorarioById(id, f= False):
+    h = Horarios.query().filter(id==id)
+    if h != None:
+        if f:
+            return True, h
+        else:
+            hora = {
+                'hora_id' = h.id,
+                'data' = h.data,
+                'horaInicio' = h.horaInicio,
+                'horaFim' = h.horaFim
+            }
+        return True, hora
+    return False, "Período não cadastrado"
+
