@@ -1,7 +1,7 @@
 from Nutrin import db
 from Nutrin.Consulta.Model.Horarios import Horarios
 
-class Ocupado(db.model):
+class Ocupado(db.Model):
     __tablename__ = "ocupados"
 
     id = db.Column(db.Integer, primary_key=True)

@@ -7,7 +7,7 @@ class Horarios(db.Model):
     )
 
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.Datetime, nullable=False)
+    data = db.Column(db.Date, nullable=False)
     horaInicio = db.Column(db.TIME, nullable=False)
     horaFim = db.Column(db.TIME, nullable=False)
 
