@@ -23,7 +23,8 @@ def pesquisarPaciente(username, f=False):
                 'sexo': p.sexo,
                 'cidade': p.cidade,
                 'profissao': p.profissao,
-                'objetivo': p.objetivo
+                'objetivo': p.objetivo,
+                'ativo':p.user.ativo
                 }
                 return True, paciente_dic
         return False, "usuario não é um paciente"

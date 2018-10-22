@@ -19,4 +19,4 @@ def createOcupado(periodo_id,hI,hF):
 
 #se no dia ha algum ocupado
 #se sim verifica se é o mesmo horario
-
+14:00 as 16:00

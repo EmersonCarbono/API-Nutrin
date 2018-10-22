@@ -2,8 +2,8 @@ from Nutrin.Consulta.Services.Antropometria.readAntropometria import readAntropo
 from Nutrin import db
 
 def updateAntropometria(antropometria_id,peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro):
-    a = readAntropometria(antropometria_id, True)
-    if a:
+    status, a = readAntropometria(antropometria_id, True)
+    if status:
         a.peso = peso
         a.braco = braco
         a.torax = torax

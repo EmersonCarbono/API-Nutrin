@@ -11,7 +11,7 @@ class Consulta(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     paciente_id = db.Column(db.Integer, db.ForeignKey('pacientes.id'), nullable=False)
     tipoAtendimento_id = db.Column(db.Integer, db.ForeignKey('tipoAtendimentos.id'), nullable=False)
-    horario_id = db.Column(db.Integer, db.ForeignKey('ocupados.id'), nullable=False)
+    horario_id = db.Column(db.Integer, db.ForeignKey('ocupados.id'), nullable=True)
     tipoEstado_id = db.Column(db.Integer, db.ForeignKey('tipoEstados.id'), nullable=False)
     antropometria_id = db.Column(db.Integer, db.ForeignKey('antropometrias.id'))
     dieta = db.Column(db.LargeBinary)

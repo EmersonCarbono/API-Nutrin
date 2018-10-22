@@ -1,5 +1,5 @@
 from Nutrin.Consulta.Model.TipoEstado import TipoEstado
-from Nutrin.Consulta.Services.tipoEstado.validarNome import validarNome
+from Nutrin.Consulta.Services.TipoEstado.validarNome import validarNome
 from Nutrin import db
 
 def createTipoEstado(nome):

@@ -30,12 +30,17 @@ def testePesquisarPaciente(username):
     dados = Req.api.get(url).json()
     return dados
 
-def testeExcluirPaciente(username):
-    url = url_basica + '/paciente/excluir/' + username
+def testeDesativarPaciente(username):
+    url = url_basica + '/paciente/desativar/' + username
     dados = Req.api.get(url).json()
     return dados
 
-def testeAlterarPaciente(username_atual, username, nome, email, celular, tipo, dataNascimento, sexo, cidade, profissao, objetivo):
+def testeAtivarPaciente(username):
+    url = url_basica + '/paciente/ativar/' + username
+    dados = Req.api.get(url).json()
+    return dados
+
+def testeAlterarPaciente(username_atual, username, nome, email, celular, tipo, dataNascimento, sexo, cidade, profissao, objetivo, altura):
     url = url_basica + '/paciente/alterar-paciente'
     paciente = {
         "username_atual": username_atual,
@@ -49,6 +54,7 @@ def testeAlterarPaciente(username_atual, username, nome, email, celular, tipo, d
         "cidade": cidade,
         "profissao": profissao,
         "objetivo": objetivo,
+        "altura": altura
         
     }
     dados = Req.api.put(url, json=paciente).json()
@@ -56,9 +62,10 @@ def testeAlterarPaciente(username_atual, username, nome, email, celular, tipo, d
 
 def main():
     #print(testeListarPaciente())
-    print(testeCadastrarPaciente())
-    #print(testePesquisarPaciente('ozob'))
-    #print(testeExcluirPaciente("ozob"))
-    #print(testeAlterarPaciente('ozob', 'ozob', 'Emerson TKP', 'lala@gmail.com', '11955554662', 'P','01081998', 'm', 'são paulo', 'devs', 'ganhar massa', altura))
+    #print(testeCadastrarPaciente())
+    print(testePesquisarPaciente('ozob'))
+    #print(testeDesativarPaciente("ozob"))
+    #print(testeAtivarPaciente("ozob"))
+    #print(testeAlterarPaciente('ozob', 'ozob', 'Emerson TKP', 'lala@gmail.com', '11955554662', 'P','01081998', 'm', 'são paulo', 'devs', 'ficar monstrao', '1.85'))
 
 main()

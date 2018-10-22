@@ -26,9 +26,11 @@ from Nutrin.Paciente.ErrorHandlers import *
 
 #  Consulta
 from Nutrin.Consulta.Model.Consulta import Consulta
-from Nutrin.Consulta.Model.Consulta import TipoAtendimento
-from Nutrin.Consulta.Model.Consulta import TipoEstado
-from Nutrin.Consulta.Model.Consulta import Antropometria
+from Nutrin.Consulta.Model.TipoAtendimento import TipoAtendimento
+from Nutrin.Consulta.Model.TipoEstado import TipoEstado
+from Nutrin.Consulta.Model.Antropometria import Antropometria
+from Nutrin.Consulta.Model.Horarios import Horarios
+from Nutrin.Consulta.Model.Ocupado import Ocupado
 from Nutrin.Consulta.Routes import *
 
 # Alimentacao

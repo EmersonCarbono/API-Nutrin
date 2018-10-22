@@ -1,8 +1,8 @@
 from Nutrin import db
 
 def updateTipoEstado(id_tipo_estado, novo_nome):
-    from Nutrin.Consulta.Services.tipoEstado.readTipoEstado import readTipoEstado
-    from Nutrin.Consulta.Services.tipoEstado.validarNome import validarNome
+    from Nutrin.Consulta.Services.TipoEstado.readTipoEstado import readTipoEstado
+    from Nutrin.Consulta.Services.TipoEstado.validarNome import validarNome
     novo_nome = novo_nome.upper()
     tipos_estados = readTipoEstado(True)
     if validarNome(novo_nome):

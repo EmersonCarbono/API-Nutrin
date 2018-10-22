@@ -1,15 +1,15 @@
 from Nutrin import db
 from Nutrin.Consulta.Model.Horarios import Horarios
 
-def listHorario():
+def listHorario(hoje=False):
     horarios = Horarios.query.all()
     lista = []
     for h in horarios:
         lista.appen({
-        'hora_id' = h.id,
-        'data' = h.data,
-        'horaInicio' = h.horaInicio,
-        'horaFim' = h.horaFim})
+        'hora_id': h.id,
+        'data': h.data,
+        'horaInicio': h.horaInicio,
+        'horaFim':h.horaFim})
     return lista
 
 def listHorarioData(data):
@@ -18,10 +18,10 @@ def listHorarioData(data):
     if horarios != None:
         for h in horarios:
             lista.appen({
-            'hora_id' = h.id,
-            'data' = h.data,
-            'horaInicio' = h.horaInicio,
-            'horaFim' = h.horaFim})
+            'hora_id' : h.id,
+            'data' : h.data,
+            'horaInicio' : h.horaInicio,
+            'horaFim' : h.horaFim})
         return True, lista
     return False, "Não há periodos nessa data"
 
@@ -40,6 +40,24 @@ def listHorarioDisp():
         lista = [disponiveis,parcial]
         return True, lista
     return False, 'Não há horários cadastrados'
+
+
+def listDisponiveis():
+    diaHoras = {}
+    periodos = listHorario()
+    for p in periodos:
+        qtdHoras = p['horaFim'] - p['horaInicio']
+        for i in range(0, qtdHoras):
+            diaHoras[p['data']].append(p['horaInicio']+i)
+        statusOcup, dadoOcup = readOcupadoNoPeriodo(p['id'])
+        if statusOcup and (dadoOcup['horaI'] in diaHoras[p['data']]):
+            diaHoras[p['data']].remove(dadoOcup['horaI'])
+    return diaHoras
+
+     
+
+
+
 
 
 

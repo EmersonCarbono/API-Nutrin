@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: dcd85952fd38
+Revision ID: ee11e8d522f7
 Revises: 
-Create Date: 2018-09-17 19:50:58.423809
+Create Date: 2018-10-11 20:24:44.263506
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'dcd85952fd38'
+revision = 'ee11e8d522f7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -37,12 +37,21 @@ def upgrade():
     sa.Column('pesoMagro', sa.Float(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('horarios',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('data', sa.Date(), nullable=True),
+    sa.Column('horaInicio', sa.TIME(), nullable=True),
+    sa.Column('horaFim', sa.TIME(), nullable=True),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('data', 'horaInicio', 'horaFim', name='periodo unico')
+    )
     op.create_table('tipoAtendimentos',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('nome', sa.String(length=30), nullable=True),
+    sa.Column('nome', sa.String(length=300), nullable=True),
     sa.Column('preco', sa.Float(), nullable=True),
     sa.Column('qtdRetorno', sa.Integer(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('nome')
     )
     op.create_table('tipoEstados',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -67,6 +76,14 @@ def upgrade():
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
+    )
+    op.create_table('ocupados',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('horario_id', sa.Integer(), nullable=False),
+    sa.Column('horaI', sa.TIME(), nullable=False),
+    sa.Column('horaF', sa.TIME(), nullable=False),
+    sa.ForeignKeyConstraint(['horario_id'], ['horarios.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('pacientes',
     sa.Column('id', sa.Integer(), nullable=False),
@@ -104,13 +121,13 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('paciente_id', sa.Integer(), nullable=False),
     sa.Column('tipoAtendimento_id', sa.Integer(), nullable=False),
-    sa.Column('hora', sa.TIME(), nullable=False),
-    sa.Column('data', sa.Date(), nullable=False),
+    sa.Column('horario_id', sa.Integer(), nullable=True),
     sa.Column('tipoEstado_id', sa.Integer(), nullable=False),
     sa.Column('antropometria_id', sa.Integer(), nullable=True),
     sa.Column('dieta', sa.LargeBinary(), nullable=True),
     sa.Column('pagamento', sa.Boolean(), nullable=True),
-    sa.ForeignKeyConstraint(['antropometria_id'], ['tipoAtendimentos.id'], ),
+    sa.ForeignKeyConstraint(['antropometria_id'], ['antropometrias.id'], ),
+    sa.ForeignKeyConstraint(['horario_id'], ['ocupados.id'], ),
     sa.ForeignKeyConstraint(['paciente_id'], ['pacientes.id'], ),
     sa.ForeignKeyConstraint(['tipoAtendimento_id'], ['tipoAtendimentos.id'], ),
     sa.ForeignKeyConstraint(['tipoEstado_id'], ['tipoEstados.id'], ),
@@ -135,9 +152,11 @@ def downgrade():
     op.drop_table('consultas')
     op.drop_table('anamneses')
     op.drop_table('pacientes')
+    op.drop_table('ocupados')
     op.drop_table('users')
     op.drop_table('tipoRefeicoes')
     op.drop_table('tipoEstados')
     op.drop_table('tipoAtendimentos')
+    op.drop_table('horarios')
     op.drop_table('antropometrias')
     # ### end Alembic commands ###
