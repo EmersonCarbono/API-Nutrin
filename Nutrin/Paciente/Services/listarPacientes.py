@@ -18,6 +18,7 @@ def listarPacientes(f=False):
             'sexo': p.sexo,
             'cidade': p.cidade,
             'profissao': p.profissao,
+            'altura': p.altura,
             'objetivo': p.objetivo
         })
     return pacientes_dic

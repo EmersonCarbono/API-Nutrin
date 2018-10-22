@@ -7,9 +7,9 @@ class Horarios(db.Model):
     )
 
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.Date)
-    horaInicio = db.Column(db.TIME)
-    horaFim = db.Column(db.TIME)
+    data = db.Column(db.Date, nullable=False)
+    horaInicio = db.Column(db.TIME, nullable=False)
+    horaFim = db.Column(db.TIME, nullable=False)
 
     def __init__(self, data, horaInicio, horaFim):
         self.data = data
