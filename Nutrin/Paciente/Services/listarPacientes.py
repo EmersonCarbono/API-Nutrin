@@ -13,6 +13,7 @@ def listarPacientes(f=False):
             'email': p.user.email,
             'celular': p.user.celular,
             'tipo': p.user.tipo,
+            'ativo':p.user.ativo,
             'dataNascimento': p.dataNascimento,
             'sexo': p.sexo,
             'cidade': p.cidade,

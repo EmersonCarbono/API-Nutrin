@@ -25,8 +25,8 @@ def testeAlterarUser(id, nome):
     return Dados
 
 def main():
-    #print(testeCadastrarUser('solicitado'))
+    #print(testeCadastrarUser('agendado'))
     #print(testeReadTipoEstado())
-    #print(testeAlterarUser(1, "realizado"))
+    print(testeAlterarUser(1, "Solicitado"))
 
 main()

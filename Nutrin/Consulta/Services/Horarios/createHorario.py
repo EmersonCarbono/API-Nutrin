@@ -15,6 +15,7 @@ def validaCadastro(data, hI,hF):
 
 def createHorario(data, horaInicio, horaFim):
     status, dado = readHorario(data, horaInicio, horaFim, True)
+    print('retorno readHorario: ', status, dado)
     if status:
         return False, "Este periodo já está disponível"
     else:

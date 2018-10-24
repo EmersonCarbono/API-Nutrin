@@ -4,7 +4,7 @@ url_padrao = "http://127.0.0.1:5000"
 
 def testeCadastrarUser():
     url = url_padrao + "/usuarios/cadastrar"
-    user = {
+    user2 = {
         "username":'admin',
         "password":"0123456",
         'nome':'Monkey D. Luffy',
@@ -12,14 +12,22 @@ def testeCadastrarUser():
         'celular':'11955554662',
         'tipo':'A'
         }
+    user = {
+        "username":'Aline',
+        "password":"aline.nutri",
+        'nome':'Aline nutri',
+        'email':'lady@gmail.com',
+        'celular':'11986532415',
+        'tipo':'N'
+        }
     Dados = Req.api.post(url, json=user).json()
     return Dados
 
 def testeAlterarSenha():
     url = url_padrao + "/usuario/alterar-senha"
     user = {
-        "username": 'ozob',
-        "password_atual": '790843',
+        "username": 'admin',
+        "password_atual": '0123456',
         "password_nova": '12345'
         }
     Dados = Req.api.put(url, json=user).json()
@@ -49,14 +57,21 @@ def testeBuscarUser(username):
     return Dados
 
 def testeExcluirUser(username):
-    url = url_padrao + "/usuario/excluir/" + username
+    url = url_padrao + "/usuario/desativar/" + username
     Dados = Req.api.get(url).json()
     return Dados 
 
+def testeAtivarUser(username):
+    url = url_padrao + "/usuario/ativar/" + username
+    Dados = Req.api.get(url).json()
+    return Dados
+
 def main():
-    print(testeCadastrarUser())
+    #print(testeCadastrarUser())
     #print(testeListarUser())
-    #print(testeBuscarUser('gabi'))
+    #print(testeBuscarUser('Aline'))
     #print(testeAlterarUser())
     #print(testeAlterarSenha())
+    print(testeExcluirUser('Aline'))
+    #print(testeAtivarUser('Aline'))
 main()

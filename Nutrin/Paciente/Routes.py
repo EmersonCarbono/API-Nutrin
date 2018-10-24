@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from flask import jsonify, request
 from Nutrin import app
 from Nutrin import response
@@ -77,15 +78,28 @@ def AlterarPacienteRoute():
     response["Mensagem"] = mensagem
     return jsonify(response)
 
-@app.route('/paciente/excluir/<username>', methods=["GET"])
-def ExcluirPacienteRoute(username):
-    from Nutrin.Paciente.Services.excluirPaciente import excluirPaciente
-    if excluirPaciente(username):
+@app.route('/paciente/desativar/<username>', methods=["GET"])
+def DesativarPacienteRoute(username):
+    from Nutrin.Paciente.Services.excluirPaciente import desativarPaciente
+    if desativarPaciente(username):
         response["Status"] = "Sucesso"
         response['Dados'] = ''
-        response['Mensagem'] = "Paciente foi excluido"
+        response['Mensagem'] = "Paciente foi desativado"
         return jsonify(response)
     response["Status"] = "Erro"
     response['Dados'] = ''
-    response['Mensagem'] = "Falaha ao exlcuir o paciente"
+    response['Mensagem'] = "Falaha ao desativar o paciente"
+    return jsonify(response)
+
+@app.route('/paciente/ativar/<username>', methods=["GET"])
+def AtivarPacienteRoute(username):
+    from Nutrin.Paciente.Services.excluirPaciente import ativarPaciente
+    if ativarPaciente(username):
+        response["Status"] = "Sucesso"
+        response['Dados'] = ''
+        response['Mensagem'] = "Paciente foi ativado"
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response['Dados'] = ''
+    response['Mensagem'] = "Falaha ao ativar o paciente"
     return jsonify(response)
