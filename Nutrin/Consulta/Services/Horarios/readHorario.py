@@ -3,10 +3,7 @@ from Nutrin import db
 from Nutrin.Controle.converter_data import *
 
 def readHorario(data, horaInicio, horaFim, f =False):
-    dataObj = stringToDate(data)
-    horaI = stringToTime(horaInicio)
-    horaF = stringToTime(horaFim)
-    h = db.session.query(Horarios).filter(data==data)
+    h = db.session.query(Horarios).filter(data==data,horaInicio==horaInicio,horaFim==horaFim)
     print(h)
     if h != None:
         if f:
@@ -21,11 +18,17 @@ def readHorario(data, horaInicio, horaFim, f =False):
         return True, hora
     return False, "Período não cadastrado"
 
-def readHorarioById(id, f= False):
-    h = db.session.query(Horarios).filter(Horarios.id==id)
-    if h != None:
+def readHorarioById(horaraio_id, f= False):
+    h = Horarios.query.all()
+    #User.query.get(1)
+    print(horaraio_id) 
+    if h:
         if f:
-            return True, h
+            for i in h:
+                a = i.id
+                if int(a) == int(horaraio_id):
+                    return True, i
+            return False, "Período não cadastrado"
         else:
             hora = {
                 'hora_id' : h.id,
@@ -33,6 +36,7 @@ def readHorarioById(id, f= False):
                 'horaInicio' : h.horaInicio,
                 'horaFim' : h.horaFim
             }
+        
         return True, hora
     return False, "Período não cadastrado"
 

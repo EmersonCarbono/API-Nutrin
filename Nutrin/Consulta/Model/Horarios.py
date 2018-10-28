@@ -7,15 +7,15 @@ class Horarios(db.Model):
     )
 
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.Date, nullable=False)
-    horaInicio = db.Column(db.TIME, nullable=False)
-    horaFim = db.Column(db.TIME, nullable=False)
+    data = db.Column(db.String(10))
+    horaInicio = db.Column(db.String(5))
+    horaFim = db.Column(db.String(5))
 
     def __init__(self, data, horaInicio, horaFim):
         self.data = data
-        self.horaIncio = horaInicio
+        self.horaInicio = horaInicio
         self.horaFim = horaFim
 
-    def __repr__(self):
-        return "<Período disponível: {} - {} - {}".format(self.data, self.horaInicio, self.horaFim)
+    # def __repr__(self):
+    #     return "<Período disponível: {} - {} - {}".format(self.data, self.horaInicio, self.horaFim)
 

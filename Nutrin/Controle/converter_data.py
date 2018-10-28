@@ -2,8 +2,8 @@ import datetime
 from dateutil.parser import parse
 
 def stringToDate(data_str):
-    dia = int(data_str[8:10])
-    mes = int(data_str[5:7])
+    dia = int(data_str[0:2])
+    mes = int(data_str[3:4])
     ano = int(data_str[0:4])
     data = datetime.datetime(ano, mes, dia)
     return data
@@ -20,7 +20,7 @@ def timeToString(time_obj):
     return str("{}:{}".format(hora,minuto))
 
 
-def stringToTime(time_str):
-    datetime_format = "%H:%M"
-    #return datetime.strptime(time_str, datetime_format)
-    return parse(time_str)
+def stringToDatetime(time_str):
+    datetime_format = "%Y-%m-%d - %H:%M"
+    return datetime.datetime.strptime(time_str, datetime_format)
+    #return parse(time_str)

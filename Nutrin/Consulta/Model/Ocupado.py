@@ -6,10 +6,10 @@ class Ocupado(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     horario_id = db.Column(db.Integer, db.ForeignKey('horarios.id'), nullable=False)
-    horaI = db.Column(db.TIME, nullable=False)
-    horaF = db.Column(db.TIME, nullable=False)
+    horaI = db.Column(db.String(5), nullable=False)
+    horaF = db.Column(db.String(5), nullable=False)
 
-    def __init__(horario_id, horaI, horaF):
+    def __init__(self, horario_id, horaI, horaF):
         self.horario_id = horario_id
         self.horaI = horaI
         self.horaF = horaF

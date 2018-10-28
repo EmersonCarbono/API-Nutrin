@@ -5,7 +5,7 @@ def listHorario(hoje=False):
     horarios = Horarios.query.all()
     lista = []
     for h in horarios:
-        lista.appen({
+        lista.append({
         'hora_id': h.id,
         'data': h.data,
         'horaInicio': h.horaInicio,
@@ -17,13 +17,17 @@ def listHorarioData(data):
     lista = []
     if horarios != None:
         for h in horarios:
-            lista.appen({
-            'hora_id' : h.id,
-            'data' : h.data,
-            'horaInicio' : h.horaInicio,
-            'horaFim' : h.horaFim})
+            print(h.data == data)
+            if h.data == data:        
+                lista.append({
+                'hora_id' : h.id,
+                'data' : h.data,
+                'horaInicio' : h.horaInicio,
+                'horaFim' : h.horaFim})
+        if not lista:
+            return False, "Não há periodos nessa data"
         return True, lista
-    return False, "Não há periodos nessa data"
+    
 
 def listHorarioDisp():
     from Nutrin.Consulta.Services.Ocupado.readOcupado import readOcupadoNoPeriodo
@@ -43,15 +47,23 @@ def listHorarioDisp():
 
 
 def listDisponiveis():
+    from Nutrin.Consulta.Services.Ocupado.readOcupado import readOcupadoNoPeriodo
     diaHoras = {}
     periodos = listHorario()
-    for p in periodos:
-        qtdHoras = p['horaFim'] - p['horaInicio']
+    #print(periodos)
+    for p in periodos:  
+        qtdHoras = int(p['horaFim'][:2]) - int(p['horaInicio'][:2])
+        diaHoras[p['data']] = []
         for i in range(0, qtdHoras):
-            diaHoras[p['data']].append(p['horaInicio']+i)
-        statusOcup, dadoOcup = readOcupadoNoPeriodo(p['id'])
-        if statusOcup and (dadoOcup['horaI'] in diaHoras[p['data']]):
-            diaHoras[p['data']].remove(dadoOcup['horaI'])
+            diaHoras[p['data']].append(int(p['horaInicio'][:2])+i)
+        #print(diaHoras)
+        statusOcup, dadoOcup = readOcupadoNoPeriodo(p['hora_id'])
+        #print(statusOcup, dadoOcup)
+        if statusOcup:
+            print(statusOcup, dadoOcup)
+            for o in dadoOcup:
+                if int(o['horaI'][:2]) in diaHoras[p['data']]:
+                    diaHoras[p['data']].remove(int(o['horaI'][:2]))
     return diaHoras
 
      

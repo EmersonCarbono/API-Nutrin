@@ -20,7 +20,7 @@ def testeCadastrarUser():
         'celular':'11986532415',
         'tipo':'N'
         }
-    Dados = Req.api.post(url, json=user).json()
+    Dados = Req.api.post(url, json=user2).json()
     return Dados
 
 def testeAlterarSenha():
@@ -67,11 +67,11 @@ def testeAtivarUser(username):
     return Dados
 
 def main():
-    #print(testeCadastrarUser())
+    print(testeCadastrarUser())
     #print(testeListarUser())
     #print(testeBuscarUser('Aline'))
     #print(testeAlterarUser())
     #print(testeAlterarSenha())
-    print(testeExcluirUser('Aline'))
+    #print(testeExcluirUser('Aline'))
     #print(testeAtivarUser('Aline'))
 main()

@@ -229,7 +229,7 @@ def updateHorarioRoute():
     response["Mensagem"] = mensagem
     return jsonify(response)
 
-@app.route('/horario/deletar/<id>', methods=['DELETE'])
+@app.route('/horario/deletar/<id>', methods=['GET'])
 def deleteHorarioRoute(id):
     from Nutrin.Consulta.Services.Horarios.deleteHorario import deleteHorario
     status, mensagem = deleteHorario(id)
@@ -368,18 +368,18 @@ def listConsultasRoute():
 
 @app.route('/consultas/paciente/<id_paciente>', methods=["GET"])
 def listConsultasPacientesRoute(id_paciente):
-    from Nutrin.Consulta.Services.Consulta.listConsulta import listPacienteConsulta
+    from Nutrin.Consulta.Services.Consulta.listConsulta import listByColumn
     response["Status"] = "Sucesso"
-    response["Dados"] = listPacienteConsulta(id_paciente)
+    response["Dados"] = listByColumn('paciente_id',id_paciente)
     response["Mensagem"] = 'Consultas agendadas para o paciente'
     return jsonify(response)
 
 @app.route('/consultas/horario/<id_horario>', methods=["GET"])
 def listConsultasHorariosRoute(id_horario):
-    from Nutrin.Consulta.Services.Consulta.listConsulta import listOcupadoConsulta
+    from Nutrin.Consulta.Services.Consulta.listConsulta import listByColumn
     response["Status"] = "Sucesso"
-    response["Dados"] = listOcupadoConsulta(id_horario)
-    response["Mensagem"] = 'Consultas agendadas para o paciente'
+    response["Dados"] = listByColumn('horario_id',id_horario)
+    response["Mensagem"] = 'Consultas agendadas no dia desejado'
     return jsonify(response)
 
 @app.route('/consultas/alterar', methods=['PUT'])
@@ -389,10 +389,9 @@ def updateConsultaRoute():
     consulta_id = dados["consulta_id"]
     paciente_id = dados["paciente_id"]
     tipoAtendimento_id = dados["tipoAtendimento_id"]
-    horario_id = dados["horario_id"]
     tipoEstado_id = dados["tipoEstado_id"]
     pagamento = dados["pagamento"]
-    status, mensagem = updateConsulta(consulta_id,paciente_id,tipoAtendimento_id,horario_id,tipoEstado_id,pagamento)
+    status, mensagem = updateConsulta(consulta_id,paciente_id,tipoAtendimento_id,tipoEstado_id,pagamento)
     if status:
         response["Status"] = "Sucesso"
         response["Dados"] = ""
@@ -406,15 +405,43 @@ def updateConsultaRoute():
 @app.route('/consultas/alterarHorario', methods=['PUT'])
 def updateHorarioConsultaRoute():
     dados = request.get_json()
+    from Nutrin.Consulta.Services.Consulta.updateConsulta import updateHorarioConsulta
     consulta_id = dados["consulta_id"]
-    paciente_id = dados["paciente_id"]
-    tipoAtendimento_id = dados["tipoAtendimento_id"]
     horario_id = dados["horario_id"]
     data = dados["data"]
     horaI = dados["horaI"]
     horaF = dados["horaF"]
-    tipoEstado_id = dados["tipoEstado_id"]
-    pass
+    status, msg = updateHorarioConsulta(consulta_id, horario_id,data,horaI,horaF)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = msg
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = msg
+    return jsonify(response)
+
+@app.route('/consultas/alterarId', methods=['PUT'])
+def demarcarConsultaRoute():
+    dados = request.get_json()
+    id_consulta = dados['id_consulta']
+    column = dados['column']
+    id_column = dados['id_column']
+    from Nutrin.Consulta.Services.Consulta.updateConsulta import updateUmConsulta
+    status, msg = updateUmConsulta(id_consulta, column, id_column)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = msg
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = msg
+    return jsonify(response)
+
+  
+    
     
 
 

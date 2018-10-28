@@ -23,9 +23,15 @@ class Consulta(db.Model):
         self.horario_id = horario_id
         self.tipoEstado_id = tipoEstado_id
     
-
     def __repr__(self):
         return "<Consulta {}".format(self.tipoEstado_id)
+
+    # @id_column.setter
+    # def id_column(self, x, id_set):
+    #     if x == 'tipoEstado_id':
+    #         self.__x = id_set
+
+
 
 
     

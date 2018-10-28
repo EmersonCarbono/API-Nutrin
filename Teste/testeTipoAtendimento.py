@@ -33,8 +33,8 @@ def TesteupdateTipoAtendimento(id_atendiemnto, nome, preco, qtdRetorno):
 
 
 def main():
-    #print(TesteCreateTipoAtendimento('Sala alugada', 250, 2))
-    print(TestebuscarTipoAtendimento())
+    print(TesteCreateTipoAtendimento('Sala alugada', 250, 2))
+    #print(TestebuscarTipoAtendimento())
     #print(TestebuscarTipoAtendimento(1))
     #print(TesteupdateTipoAtendimento(2, 'Residencial', 150, 1))
 main() 

@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: ee11e8d522f7
+Revision ID: f31f7b385355
 Revises: 
-Create Date: 2018-10-11 20:24:44.263506
+Create Date: 2018-10-22 21:41:35.562921
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'ee11e8d522f7'
+revision = 'f31f7b385355'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -39,9 +39,9 @@ def upgrade():
     )
     op.create_table('horarios',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('data', sa.Date(), nullable=True),
-    sa.Column('horaInicio', sa.TIME(), nullable=True),
-    sa.Column('horaFim', sa.TIME(), nullable=True),
+    sa.Column('data', sa.String(length=10), nullable=True),
+    sa.Column('horaInicio', sa.String(length=5), nullable=True),
+    sa.Column('horaFim', sa.String(length=5), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('data', 'horaInicio', 'horaFim', name='periodo unico')
     )
@@ -80,8 +80,8 @@ def upgrade():
     op.create_table('ocupados',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('horario_id', sa.Integer(), nullable=False),
-    sa.Column('horaI', sa.TIME(), nullable=False),
-    sa.Column('horaF', sa.TIME(), nullable=False),
+    sa.Column('horaI', sa.String(length=5), nullable=False),
+    sa.Column('horaF', sa.String(length=5), nullable=False),
     sa.ForeignKeyConstraint(['horario_id'], ['horarios.id'], ),
     sa.PrimaryKeyConstraint('id')
     )

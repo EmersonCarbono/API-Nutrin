@@ -1,28 +1,33 @@
 from Nutrin import db
 from Nutrin.Consulta.Model.Ocupado import Ocupado
 
-def readOcupado(id,f=False):
-    o = Ocupado.query().filter(id==id)
+def readOcupado(id_ocupado,f=False):
+    #o = Ocupado.query().filter(id==id)
+    o = Ocupado.query.get(id_ocupado)
+    #print('--------------------------nao precisa? {}'.format(o))
     if o != None:
         if f:
             return True, o
         return True, {
-        id: o.id,
-        data: o.horario_id, 
-        hora: o.horaI,
-        horaF: o.horaF }
+        'id': o.id,
+        'data': o.horario_id, 
+        'horaI': o.horaI,
+        'horaF': o.horaF }
     return False, "Esse id não foi encontrado"
 
 def readOcupadoNoPeriodo(id_periodo):
-    o = Ocupado.query().filter(horario_id == id_periodo)
-    if o != None:
+    o = Ocupado.query.all()
+    if o:
         lista = []
         for ocup in o:
-            lista.append({
-                'id':ocup.id,
-                'horaI': ocup.horaI,
-                'horaF': ocup.horaF
-            })
+            if int(ocup.horario_id) == int(id_periodo):
+                lista.append({
+                    'id':ocup.id,
+                    'horaI': ocup.horaI,
+                    'horaF': ocup.horaF
+                    })
+        if not lista:
+            return False, 'Nenhum horario ocupado'
         return True, lista
     return False, 'Nenhum horario ocupado'
 
