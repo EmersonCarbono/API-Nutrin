@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-from Nutrin.Alimentacao.Model.TipoRefeicao import TipoRefeicao
-from Nutrin.Alimentacao.Services.TipoRefeicao.validarNome import validarNome
+from Nutrin.Alimentacao.Model.Refeicao import Refeicao
+from Nutrin.Alimentacao.Services.Refeicao.validarNome import validarNome
 
 
-def createTipoRefeicao(nome):
+def createRefeicao(nome):
     nome = nome.upper()
     if validarNome(nome):
-        tipoRef = TipoRefeicao(nome)
+        tipoRef = Refeicao(nome)
         from Nutrin import db
         db.session.add(tipoRef)
         db.session.commit()
