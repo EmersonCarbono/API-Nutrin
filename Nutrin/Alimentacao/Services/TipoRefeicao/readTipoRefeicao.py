@@ -14,6 +14,6 @@ def readTipoRefeicao(f=False):
         })
     return tipos_ref_dic
 
-# def readTipoRefeicaoById(id_tipoRef):
-#     return TipoRefeicao.query.get(id_tipoRef)
+def readTipoRefeicaoById(id_tipoRef):
+    return TipoRefeicao.query.get(id_tipoRef)
      
