@@ -106,7 +106,7 @@ def main():
     # print(testeAlterarHorarioConsulta('3','3','2018-11-01','13:00','14:00'))
     # print(testeDesmarcarConsulta('2','tipoEstado_id','3'))
     # print(testeAdcAntropometria('2','antropometria_id','1'))
-    # print(testeAdcDieta('2','dieta',))
+    # print(testeAdcDieta('1','dieta','../Users/gabic/Documents'))
     # print(testeAdcPagamento('2','pagamento', True))
 main()
 
