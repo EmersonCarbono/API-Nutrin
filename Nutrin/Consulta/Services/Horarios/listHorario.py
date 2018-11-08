@@ -64,7 +64,10 @@ def listDisponiveis():
             for o in dadoOcup:
                 if int(o['horaI'][:2]) in diaHoras[p['data']]:
                     diaHoras[p['data']].remove(int(o['horaI'][:2]))
-    return diaHoras
+    horasDisp = []
+    for dia, horas in diaHoras.items():
+        horasDisp.append({"dia":dia,"horas":horas}) 
+    return horasDisp
 
      
 
