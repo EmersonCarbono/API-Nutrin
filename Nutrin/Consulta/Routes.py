@@ -119,12 +119,12 @@ def createAntropometriaRoute():
     status, mensagem = createAntropometria(peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
     if status:
         response["Status"] = "Sucesso"
-        response["Dados"] = ""
-        response["Mensagem"] = mensagem
+        response["Dados"] = mensagem[1]
+        response["Mensagem"] = mensagem[0]
         return jsonify(response)
     response["Status"] = "Erro"
-    response["Dados"] = ""
-    response["Mensagem"] = mensagem
+    response["Dados"] = mensagem[1]
+    response["Mensagem"] = mensagem[0]
     return jsonify(response)
         
 
@@ -148,7 +148,7 @@ def updateAntropometriaRoute():
     gorduraPerc = dados["gorduraPerc"]
     aguaPerc = dados["aguaPerc"]
     pesoMagro = dados["pesoMagro"]
-    status, mensagem = updateAntropometria(antropometria_id,peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
+    status, mensagem = updateAntropometria(antropometria_id, peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
     if status:
         response["Status"] = "Sucesso"
         response["Dados"] = ""
@@ -423,6 +423,20 @@ def demarcarConsultaRoute():
     id_column = dados['id_column']
     from Nutrin.Consulta.Services.Consulta.updateConsulta import updateUmConsulta
     status, msg = updateUmConsulta(id_consulta, column, id_column)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = msg
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = msg
+    return jsonify(response)
+
+@app.route('/consultas/delete/<id_consulta>', methods=['delete'])
+def deletarConsultaRoute(id_consulta):
+    from Nutrin.Consulta.Services.Consulta.deleteConsulta import deleteConsulta
+    status, msg = deleteConsulta(id_consulta)
     if status:
         response["Status"] = "Sucesso"
         response["Dados"] = ""

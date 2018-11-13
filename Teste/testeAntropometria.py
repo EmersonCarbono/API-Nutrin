@@ -60,9 +60,9 @@ def testeDeletarAntropometria(id):
 
 
 def main():
-    #print(testeCadastroAntropometria())
+    print(testeCadastroAntropometria())
     #print(testeAlterarAntropometria(1, 53.4, 27,79,66,74,95,56,9,15,6,10,16,18.33,49.55,71.53))
     #print(testeBuscarAntropometria('2'))
-    print(testeDeletarAntropometria('2'))
+    #print(testeDeletarAntropometria('2'))
 
 main()

@@ -56,7 +56,7 @@ def readOcupadoById(id_ocupado):
         print(ocup.horario_id)
         a = ocup.horario_id
         status, pqp = readHorarioById(a, True)
-        return [ocup.horaI, pqp.data]
+        return [ocup.id, ocup.horaI, ocup.horaF, pqp.data]
     return print('id ocupado ---------------- {}'.format(id_ocupado))
 
 

@@ -5,5 +5,5 @@ def createAntropometria(peso, braco, torax, cintura, abdomen, quadril, coxa, bic
     a = Antropometria(peso, braco, torax, cintura, abdomen, quadril, coxa, biceps, triceps, peito, subsCap, axilar, gorduraPerc, aguaPerc, pesoMagro)
     db.session.add(a)
     db.session.commit()
-    return True, 'Antropometria cadastrada com sucesso!'
+    return True, ['Antropometria cadastrada com sucesso!', a.id]
 

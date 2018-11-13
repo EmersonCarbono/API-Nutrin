@@ -95,6 +95,11 @@ def testeAdcPagamento(id_consulta, column, id_column):
     dados = Req.api.put(url, json=consulta).json()
     return dados
 
+def testeDeleteConsulta(id_consulta):
+    url = url_basica + '/consultas/delete/' + id_consulta
+    dados = Req.api.delete(url).json()
+    return dados
+
 
 
 def main():
@@ -108,6 +113,7 @@ def main():
     # print(testeAdcAntropometria('2','antropometria_id','1'))
     # print(testeAdcDieta('1','dieta','../Users/gabic/Documents'))
     # print(testeAdcPagamento('2','pagamento', True))
+    # print(testeDeleteConsulta('6'))
 main()
 
  #[{'id': 1, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 2, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 3, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 4, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 5, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 6, 'horaI': '12:00', 'horaF': '13:00'}]

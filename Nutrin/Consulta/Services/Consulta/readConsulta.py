@@ -40,15 +40,20 @@ def readConsultaId(id_consulta,f=False):
         if f:
             return True, consultas
         consultas_dic = []
-        for c in consultas:
+        for c in consultas:    
+            tipoEstado = readEstadoById(c.tipoEstado_id)
+            tipoAtendimento = readAtendimentoById(c.tipoAtendimento_id)
+            horario = readOcupadoById(c.horario_id)
+            paciente = pesquisarPacienteById(c.paciente_id)
+            dieta = binaryToString(c.dieta)
             consultas_dic.append({
                 'id': c.id,
-                'paciente_id': c.paciente_id.nome,
-                'tipoAtendimento_id': c.tipoAtendimento_id.nome,
-                'horario_id': c.horario_id,
-                'tipoEstado_id': c.tipoEstado_id.nome,
+                'paciente_id': paciente,
+                'tipoAtendimento_id': tipoAtendimento,
+                'horario_id': horario,
+                'tipoEstado_id': tipoEstado,
                 'antropometria_id': c.antropometria_id,
-                'dieta': c.dieta,
+                'dieta': dieta,
                 'pagamento': c.pagamento
             })
         return True, consultas_dic
