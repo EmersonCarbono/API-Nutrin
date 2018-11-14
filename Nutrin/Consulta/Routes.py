@@ -447,6 +447,25 @@ def deletarConsultaRoute(id_consulta):
     response["Mensagem"] = msg
     return jsonify(response)
 
+@app.route('/consultas/antropometria', methods=['PUT'])
+def adiconarAntropometria():
+    dados = request.get_json()
+    id_consulta = dados['id_consulta']
+    id_antropometria = dados['id_antropometria']
+    from Nutrin.Consulta.Services.Consulta.adicionarAntropometria import adicionarAntropometria
+    status, msg = adicionarAntropometria(id_consulta, id_antropometria)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = ""
+        response["Mensagem"] = msg
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = msg
+    return jsonify(response)
+
+
+
   
     
     
