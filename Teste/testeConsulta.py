@@ -94,6 +94,15 @@ def testeAdcPagamento(id_consulta, column, id_column):
     }
     dados = Req.api.put(url, json=consulta).json()
     return dados
+  
+def testeAdicionarAntropometria(id_consulta, id_antropometria):
+    url = url_basica + '/consultas/antropometria'
+    dados = {
+        'id_consulta' : id_consulta,
+        'id_antropometria' : id_antropometria
+    }
+    dados = Req.api.put(url, json=dados).json()
+    return dados
 
 def testeDeleteConsulta(id_consulta):
     url = url_basica + '/consultas/delete/' + id_consulta
@@ -104,7 +113,6 @@ def testeDeleteConsulta(id_consulta):
 
 def main():
     # print(testeConsultaCreate("2", "1", "17:00","18:00", "2018-11-01", "1"))
-     print(testeListConsultas())
     # print(testeListConsultasPacientes('2'))
     # print(testeListConsultaHorarios('2018-11-01'))
     # print(testeAlterarConsulta('3','2','1','1',True))
@@ -114,6 +122,9 @@ def main():
     # print(testeAdcDieta('1','dieta','../Users/gabic/Documents'))
     # print(testeAdcPagamento('2','pagamento', True))
     # print(testeDeleteConsulta('6'))
+    print(testeAdicionarAntropometria(2,1))
+    #print(testeListConsultas())
+
 main()
 
  #[{'id': 1, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 2, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 3, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 4, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 5, 'horaI': '11:00', 'horaF': '12:00'}, {'id': 6, 'horaI': '12:00', 'horaF': '13:00'}]
