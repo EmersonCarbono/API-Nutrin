@@ -359,6 +359,20 @@ def listConsultasRoute():
     response["Mensagem"] = 'Consultas agendadas'
     return jsonify(response)
 
+@app.route('/consulta/<id_consulta>', methods=["GET"])
+def readConsultasByIdRoute(id_consulta):
+    from Nutrin.Consulta.Services.Consulta.readConsulta import readConsultaId
+    status, consulta = readConsultaId(id_consulta)
+    if status:
+        response["Status"] = "Sucesso"
+        response["Dados"] = consulta
+        response["Mensagem"] = 'Consultas agendadas'
+        return jsonify(response)
+    response["Status"] = "Erro"
+    response["Dados"] = ""
+    response["Mensagem"] = mensagem
+    return jsonify(response)
+
 @app.route('/consultas/paciente/<id_paciente>', methods=["GET"])
 def listConsultasPacientesRoute(id_paciente):
     from Nutrin.Consulta.Services.Consulta.listConsulta import listByColumn

@@ -109,7 +109,10 @@ def testeDeleteConsulta(id_consulta):
     dados = Req.api.delete(url).json()
     return dados
 
-
+def testeReadConsultaById(id_consulta):
+    url = url_basica + '/consulta/' + id_consulta
+    dados = Req.api.get(url).json()
+    return dados
 
 def main():
     # print(testeConsultaCreate("2", "1", "17:00","18:00", "2018-11-01", "1"))
@@ -122,7 +125,7 @@ def main():
     # print(testeAdcDieta('1','dieta','../Users/gabic/Documents'))
     # print(testeAdcPagamento('2','pagamento', True))
     # print(testeDeleteConsulta('6'))
-    print(testeAdicionarAntropometria(2,1))
+    print(testeReadConsultaById(2))
     #print(testeListConsultas())
 
 main()
