@@ -1,9 +1,13 @@
 from Nutrin.Consulta.Services.Consulta.readConsulta import readConsulta
 from Nutrin.Consulta.Model.Consulta import Consulta
 #listar todas as consultas == read
-def listConsultas():
-    status, dado = readConsulta()
-    return dado
+def listConsultas(lucro=False):
+    if lucro:
+        status, dado = readConsulta(True,True)
+        return dado
+    else:
+        status, dado = readConsulta()
+        return dado
 
 def listByColumn(column,id_column):
     lista = listConsultas()

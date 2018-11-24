@@ -39,3 +39,6 @@ from Nutrin.Alimentacao.Model.Refeicao import Refeicao
 from Nutrin.Alimentacao.Model.Anamnese import Anamnese
 from Nutrin.Alimentacao.Routes import *
 from Nutrin.Alimentacao.ErrorHandlers import *
+
+# lucros
+from Nutrin.Financeiro.Routes import *

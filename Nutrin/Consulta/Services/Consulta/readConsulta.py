@@ -4,11 +4,23 @@ from Nutrin.Consulta.Services.Ocupado.readOcupado import readOcupadoById
 from Nutrin.Paciente.Services.pesquisarPaciente import pesquisarPacienteById
 from Nutrin.Controle.converter_data import binaryToString
 
-def readConsulta(f=False):
+def readConsulta(f=False,lucro=False):
     from Nutrin.Consulta.Model.Consulta import Consulta
     consultas = Consulta.query.all()
     if consultas != None:
         if f:
+            if lucro:
+                consulas_dic = []
+                for c in consultas:
+                    horario = readOcupadoById(c.horario_id)
+                    consulas_dic.append({
+                        'id': c.id,
+                        'tipoAtendimento_id': c.tipoAtendimento_id,
+                        'horario_id': horario,
+                        'pagamento': c.pagamento
+                    })
+
+                return True, consulas_dic
             return True, consultas
         consulas_dic = []
         for c in consultas:

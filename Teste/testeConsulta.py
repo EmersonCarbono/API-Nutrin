@@ -115,7 +115,7 @@ def testeReadConsultaById(id_consulta):
     return dados
 
 def main():
-    # print(testeConsultaCreate("2", "1", "17:00","18:00", "2018-11-01", "1"))
+    # print(testeConsultaCreate("2", "1", "19:00","20:00", "2018-11-01", "1"))
     # print(testeListConsultasPacientes('2'))
     # print(testeListConsultaHorarios('2018-11-01'))
     # print(testeAlterarConsulta('3','2','1','1',True))
@@ -124,8 +124,8 @@ def main():
     # print(testeAdcAntropometria('2','antropometria_id','1'))
     # print(testeAdcDieta('1','dieta','../Users/gabic/Documents'))
     # print(testeAdcPagamento('2','pagamento', True))
-    # print(testeDeleteConsulta('6'))
-    print(testeReadConsultaById(2))
+     print(testeDeleteConsulta('2'))
+    #print(testeReadConsultaById(2))
     #print(testeListConsultas())
 
 main()
