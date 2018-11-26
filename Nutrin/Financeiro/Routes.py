@@ -8,5 +8,5 @@ def lucroRoute():
     from Nutrin.Financeiro.Services.lucroMensal import pagamentosConsultas
     response["Status"] = "sucesso"
     response["Dados"] = pagamentosConsultas()
-    response["Mensagem"] =  'sei la'
+    response["Mensagem"] =  'total de lucros'
     return jsonify(response)

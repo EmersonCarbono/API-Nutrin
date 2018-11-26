@@ -21,7 +21,8 @@ def pagamentosConsultas():
             anoConsulta = c['horario_id'][-1]
             mesConsulta = c['horario_id'][-1]
             data = anoConsulta[:7]
-            if int(anoConsulta[:3]) <= ano and int(mesConsulta[5:6]) < mes:
+            if int(anoConsulta[:4]) <= ano and int(mesConsulta[5:7]) < mes:
+                print(int(anoConsulta[:4]),int(mesConsulta[5:7]))
                 if c['pagamento']:
                     tipo = 'profit'
                 else:
@@ -52,7 +53,7 @@ def construtor(AnaliseFinac,tipo, mes, valor):
                         i['vlrTotal'] = i['vlrTotal'] + valor
                         i['qtdConsultas'] += 1
                         return AnaliseFinac
-                AnaliseFinac[x].append({
+                AnaliseFinac[p].append({
                         'mes':mes,
                         'vlrTotal': valor,
                         'qtdConsultas': 1
