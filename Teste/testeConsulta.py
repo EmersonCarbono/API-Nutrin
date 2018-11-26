@@ -115,7 +115,13 @@ def testeReadConsultaById(id_consulta):
     return dados
 
 def main():
-    # print(testeConsultaCreate("2", "1", "19:00","20:00", "2018-11-01", "1"))
+    # 11 
+    # print(testeConsultaCreate("1", "1", "10:00","11:00", "2018-05-20", "2"))
+    # print(testeConsultaCreate("2", "2", "11:00","12:00", "2018-05-20", "2"))
+    # print(testeConsultaCreate("3", "3", "12:00","13:00", "2018-05-20", "2"))
+    # print(testeConsultaCreate("4", "4", "13:00","14:00", "2018-05-20", "2"))
+    # print(testeConsultaCreate("3", "1", "14:00","15:00", "2018-05-20", "2"))
+    #print(testeConsultaCreate("4", "1", "14:00","15:00", "2018-05-17", "2"))
     # print(testeListConsultasPacientes('2'))
     # print(testeListConsultaHorarios('2018-11-01'))
     # print(testeAlterarConsulta('3','2','1','1',True))
@@ -123,8 +129,19 @@ def main():
     # print(testeDesmarcarConsulta('2','tipoEstado_id','3'))
     # print(testeAdcAntropometria('2','antropometria_id','1'))
     # print(testeAdcDieta('1','dieta','../Users/gabic/Documents'))
+    for i in range(23,56):
+        print(testeAdcPagamento(i,'pagamento', True))
+        
     # print(testeAdcPagamento('2','pagamento', True))
-     print(testeDeleteConsulta('2'))
+    # print(testeAdcPagamento('2','pagamento', True))
+    # print(testeAdcPagamento('2','pagamento', True))
+    # print(testeAdcPagamento('2','pagamento', True))
+    # print(testeAdcPagamento('2','pagamento', True))
+    # print(testeDeleteConsulta('15'))
+    # print(testeDeleteConsulta('12'))
+    # print(testeDeleteConsulta('4'))
+    # print(testeDeleteConsulta('5'))
+    # print(testeDeleteConsulta('6'))
     #print(testeReadConsultaById(2))
     #print(testeListConsultas())
 

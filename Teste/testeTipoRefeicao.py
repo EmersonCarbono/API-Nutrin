@@ -25,9 +25,15 @@ def testeAlterarTipoRefeicao(id, nome):
     return Dados
 
 def main():
-    #print(testeCadastrarTipoRef('Lanche manhã'))
+    # print(testeCadastrarTipoRef('almoço'))
+    # print(testeCadastrarTipoRef('Lanche tarde'))
+    # print(testeCadastrarTipoRef('jantar'))
+    # print(testeCadastrarTipoRef('ceia'))
+    # print(testeCadastrarTipoRef('pre-treino'))
+    # print(testeCadastrarTipoRef('pós-treino'))
+
     #print(testeReadTipoRefeicao())
-    #print(testeAlterarTipoRefeicao(2, "Almoço"))
+    #print(testeAlterarTipoRefeicao(2, "lanche da manha"))
 
 main()
 

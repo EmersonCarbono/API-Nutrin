@@ -5,12 +5,12 @@ import requests as Req
 
 url_basica = 'http://127.0.0.1:5000'
 
-def testeCadastrarHorario():
+def testeCadastrarHorario(data,horaI,horaF):
     url = url_basica + '/horario/cadastrar'
     horario = {
-        'data': '2018-11-03',
-        'horaI': '14:00',
-        'horaF': '18:00'
+        'data': data,
+        'horaI': horaI,
+        'horaF': horaF
     }
     Dados = Req.api.post(url, json=horario).json()
     return Dados
@@ -46,11 +46,28 @@ def testelistarHorarioDisp():
     return Dados
 
 def main():
-    #print(testeCadastrarHorario())
+    print(testeCadastrarHorario('2018-11-05','10:00','15:00'))
+    print(testeCadastrarHorario('2018-12-03','10:00','15:00'))
+    print(testeCadastrarHorario('2018-12-07','10:00','15:00'))
+    print(testeCadastrarHorario('2018-10-30','10:00','15:00'))
+    print(testeCadastrarHorario('2018-10-13','10:00','15:00'))
+    print(testeCadastrarHorario('2018-10-11','10:00','15:00'))
+    print(testeCadastrarHorario('2018-09-05','10:00','15:00'))
+    print(testeCadastrarHorario('2018-09-04','10:00','15:00'))
+    print(testeCadastrarHorario('2018-09-25','10:00','15:00'))
+    print(testeCadastrarHorario('2018-08-15','10:00','15:00'))
+    print(testeCadastrarHorario('2018-08-09','10:00','15:00'))
+    print(testeCadastrarHorario('2018-08-02','10:00','15:00'))
+    print(testeCadastrarHorario('2018-07-16','10:00','15:00'))
+    print(testeCadastrarHorario('2018-07-04','10:00','15:00'))
+    print(testeCadastrarHorario('2018-06-12','10:00','15:00'))
+    print(testeCadastrarHorario('2018-06-17','10:00','15:00'))
+    print(testeCadastrarHorario('2018-05-20','10:00','15:00'))
+
     #print(testeAlterarHorario())
     #print(testeDeletarHorario('1'))
     #print(testeBuscarHorario())
     #print(testeBuscarPorDia('2018-11-01'))
-    print(testelistarHorarioDisp())
+    #print(testelistarHorarioDisp())
 
 main()
