@@ -1,15 +1,13 @@
 from Nutrin import db
-from Nutrin.Consulta.Model.Consulta import Consulta
 
 class TipoAtendimento(db.Model):
     __tablename__ = "tipoAtendimentos"
 
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(30))
+    nome = db.Column(db.String(300), unique=True)
     preco = db.Column(db.Float)
     qtdRetorno = db.Column(db.Integer)
-    consultas = db.relationship('Consulta', backref='tipo')
-
+    #consultas = db.relationship('Consulta', backref='tipo')
     # c1 = Consulta(..., tipo=nomeTipo)
 
     def __init__(self, nome, preco, qtdRetorno):

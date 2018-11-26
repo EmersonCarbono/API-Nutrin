@@ -1,7 +1,6 @@
 from Nutrin import db
 from Nutrin.User.Model.User import User
-from Nutrin.Consulta.Model.Consulta import Consulta
-from Nutrin.Alimentacao.Model.Anamnese import Anamnese
+
 
 class Paciente(db.Model):
     __tablename__ = "pacientes"
@@ -15,13 +14,13 @@ class Paciente(db.Model):
     objetivo = db.Column(db.String(50))
     altura = db.Column(db.Float, nullable=False)
 
-    consultas = db.relationship('Consulta', backref='consultas')
-    anamneses = db.relationship('Anamnese', backref='anamneses')
+    #consultas = db.relationship('Consulta', backref='consultas')
+    #anamneses = db.relationship('Anamnese', backref='anamneses')
     user = db.relationship('User', foreign_keys=user_id)
 
     
     def __init__(self, id_user, dataNascimento, sexo, cidade, profissao, objetivo,altura):
-        self.user_id = id_user
+        self.user_id = id_user 
         self.dataNascimento = dataNascimento
         self.sexo = sexo
         self.cidade = cidade

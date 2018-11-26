@@ -29,7 +29,7 @@ class User(db.Model):
     def get_id(self):
         return str(self.id)
 
-    def __init__(self, username, password, nome, email, celular, tipo, ativo):
+    def __init__(self, username, password, nome, email, celular, tipo):
         self.username = username
         self.password = password
         self.nome = nome

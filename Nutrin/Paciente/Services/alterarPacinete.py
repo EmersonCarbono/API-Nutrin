@@ -1,4 +1,4 @@
-def alterarPaciente(username_atual, username, nome, email, celular, tipo, dataNascimento, sexo, cidade, profissao, objetivo):
+def alterarPaciente(username_atual, username, nome, email, celular, tipo, dataNascimento, sexo, cidade, profissao, objetivo, altura):
     from Nutrin import db
     from Nutrin.Paciente.Services.pesquisarPaciente import pesquisarPaciente
     from Nutrin.User.Services.alterarUser import alterarUser
@@ -15,6 +15,7 @@ def alterarPaciente(username_atual, username, nome, email, celular, tipo, dataNa
             p.cidade = cidade
             p.profissao = profissao
             p.objetivo = objetivo
+            p.altura = altura
             db.session.commit()
             return True, "Paciente alterado com sucesso"
         return status_user, mensagem
